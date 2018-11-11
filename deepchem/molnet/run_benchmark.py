@@ -41,7 +41,7 @@ def run_benchmark(datasets,
   ----------
   datasets: list of string
       choice of which datasets to use, should be: bace_c, bace_r, bbbp, chembl,
-      clearance, clintox, delaney, hiv, hopv, kaggle, lipo, muv, nci, pcba,
+      clearance, clintox, delaney, hiv, hopv, kaggle, lipo, muv, nci, nci_logp, pcba,
       pdbbind, ppb, qm7, qm7b, qm8, qm9, sampl, sider, tox21, toxcast, uv, factors,
       kinase
   model: string or user-defined model stucture
@@ -90,7 +90,7 @@ def run_benchmark(datasets,
         ]
     elif dataset in [
         'bace_r', 'chembl', 'clearance', 'delaney', 'hopv', 'kaggle', 'lipo',
-        'nci', 'pdbbind', 'ppb', 'qm7', 'qm7b', 'qm8', 'qm9', 'sampl'
+        'nci', 'nci_logp', 'pdbbind', 'ppb', 'qm7', 'qm7b', 'qm8', 'qm9', 'sampl'
     ]:
       mode = 'regression'
       if metric == None:
@@ -128,6 +128,7 @@ def run_benchmark(datasets,
         'lipo': deepchem.molnet.load_lipo,
         'muv': deepchem.molnet.load_muv,
         'nci': deepchem.molnet.load_nci,
+        'nci_logp': deepchem.molnet.load_nci_logp,
         'pcba': deepchem.molnet.load_pcba,
         'pcba_146': deepchem.molnet.load_pcba_146,
         'pcba_2475': deepchem.molnet.load_pcba_2475,
@@ -252,8 +253,8 @@ def load_dataset(dataset, featurizer, split='random'):
   Parameters
   ----------
   dataset: string
-      choice of which datasets to use, should be: tox21, muv, sider,
-      toxcast, pcba, delaney, factors, hiv, hopv, kaggle, kinase, nci,
+      choice of which datasets to use, should be: tox21, muv, sider, toxcast, 
+      pcba, delaney, factors, hiv, hopv, kaggle, kinase, nci, nci_logp,
       clintox, hiv, pcba_128, pcba_146, pdbbind, chembl, qm7, qm7b, qm9,
       sampl, uv
   featurizer: string or dc.feat.Featurizer.
@@ -277,6 +278,7 @@ def load_dataset(dataset, featurizer, split='random'):
       'lipo': deepchem.molnet.load_lipo,
       'muv': deepchem.molnet.load_muv,
       'nci': deepchem.molnet.load_nci,
+      'nci_logp': deepchem.molnet.load_nci_logp,
       'pcba': deepchem.molnet.load_pcba,
       'pcba_128': deepchem.molnet.load_pcba_128,
       'pcba_146': deepchem.molnet.load_pcba_146,

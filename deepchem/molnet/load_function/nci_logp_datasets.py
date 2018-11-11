@@ -23,7 +23,7 @@ def load_nci_logp(featurizer='ECFP', shard_size=1000, split='random', reload=Tru
   if not os.path.exists(dataset_file):
     raise ValueError("Dataset file not found at {}".format(dataset_file))
 
-  all_nci_logp_tasks = (['logp', 'mol_weight'])
+  all_nci_logp_tasks = (['logp'])
 
   if reload:
     loaded, all_dataset, transformers = deepchem.utils.save.load_dataset_from_disk(
